@@ -93,19 +93,24 @@ Used to improve model generalization. Includes:
 
 ### 5. ⚖️ Class Balancing
 
-Some classes (e.g., `background`, `hand`) may dominate the dataset.
+Some classes (e.g., `accepted_plastic`, `rejected_plastic`) may dominate the dataset.
+
+![alt text](data_visualization/class_distribution_before_balancing.png)
 
 To resolve this:
 
 * **Undersampling**: Limits number of samples for overrepresented classes.
 * **Oversampling**: Augments underrepresented classes to match distribution.
 
+This is the final dataset after balancing:
+
+![alt text](data_visualization/class_distribution_after_balancing.png)
+
 Final dataset is saved to:
 
 ```
 yolo-extracted-balanced/
 ```
-
 ---
 
 ## ⚙️ YOLOv8 Model Training (yolo8\_model\_training.ipynb)
