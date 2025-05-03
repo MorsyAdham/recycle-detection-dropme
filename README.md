@@ -216,4 +216,3 @@ The model allows the system to:
 
 ---
 
-Let me know if you want this exported to a `.md` file or used as the base for a formal PDF or web-based documentation.
