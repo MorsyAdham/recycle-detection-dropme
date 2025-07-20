@@ -2,7 +2,6 @@
 # ♻️ Drop Me - Recyclable Material Detection
 
 This project aims to train an object detection model capable of identifying recyclable materials inside a smart **Recycle Vending Machine** developed by **Drop Me**. The model is trained using a **custom YOLOv8 object detection pipeline** built on top of **Lightning AI** – a powerful platform that enables efficient, scalable, and reproducible AI development.
-
 * The entire training pipeline, preprocessing, and model experiments are managed through [**Lightning AI (lightning.ai)**](https://lightning.ai/), which ensures:
 
   * Seamless hardware acceleration (multi-GPU, TPU, etc.)
@@ -11,7 +10,6 @@ This project aims to train an object detection model capable of identifying recy
 
 The data used is custom-collected from inside the vending machine and categorized into six key classes.
 
----
 
 ## 📁 Project Structure
 
@@ -167,6 +165,90 @@ shutil.copy('runs/detect/train/weights/best.pt', 'models/dropme-recycle-v1.pt')
 
 ---
 
+## 📈 AI Models & Comparisons
+
+### 🧪 Models Evaluated
+
+To ensure the most accurate and efficient recyclable material detection system, multiple AI models were experimented with and benchmarked:
+
+| Model Variant          | Framework   | Purpose                                | Notes                            |
+| ---------------------- | ----------- | -------------------------------------- | -------------------------------- |
+| **YOLOv8m-unbalanced** | Ultralytics | Waste Classification and detection     | performed well on training but seemed to overfit towards the rejected_plastic when faced with unknown object during testing |
+|⚡**YOLOv8m-balanced**  | Ultralytics | Waste Classification and detection     | Same model as **YOLOv8m-unbalanced** but the model was very balanced     |
+| **YOLOv12m-unbalanced**| Ultralytics | Waste Classification and detection     | showed same results as **YOLOv8m-unbalance** |
+| **YOLOv12m-balanced**  | Torchvision | Waste Classification and detection     | showed same results as **YOLOv8m-balanced**  |
+
+> ✅ **YOLOv8m-balanced** (trained on the balanced dataset) was selected as the final model due to its **superior mAP**, fast inference, and real-time deployment capabilities compared to the **YOLOv12m-balanced** which showed slower inference and used a lot of computational power and increased latency.
+
+---
+
+### 📊 Evaluation Criteria
+
+All models were evaluated on the same **test dataset** (10% split) using the following metrics:
+
+* **Precision**
+* **Recall**
+* **mAP\@0.5**
+* **mAP\@0.5:0.95**
+* **Confusion matrix**
+* **Prediction visualization**
+
+---
+
+### 🧾 Final Results (YOLOv8m-balanced)
+
+| Class              | Precision | Recall    | mAP\@0.5  | mAP\@0.5:0.95 |
+| ------------------ | --------- | --------- | --------- | ------------- |
+| Accepted\_aluminum | 0.992     | 1.000     | 0.995     | 0.942         |
+| Accepted\_plastic  | 1.000     | 0.995     | 0.995     | 0.924         |
+| Background         | 0.895     | 1.000     | 0.995     | 0.995         |
+| Hand               | 0.906     | 0.938     | 0.971     | 0.883         |
+| Rejected\_aluminum | 1.000     | 0.965     | 0.995     | 0.900         |
+| Rejected\_plastic  | 0.997     | 0.975     | 0.995     | 0.893         |
+| **All (Mean)**     | **0.965** | **0.979** | **0.991** | **0.923**     |
+
+> 🎯 These results were achieved after balancing the dataset, applying data augmentation, and optimizing training hyperparameters.
+
+---
+
+### 🔬 Visual Evaluation
+
+The model’s predictions were visualized across the test set with annotated bounding boxes:
+
+* Confusion matrix:
+  ![](balanced_evaluation_results\confusion_matrix.png)
+
+* Example predictions:
+  ![](balanced_evaluation_results\val_batch1_pred.jpg)
+
+---
+
+### 🚀 Model Selection Justification
+
+* **YOLOv8m-balanced** offered the **best compromise** between:
+
+  * Accuracy (mAP\@0.5: 0.923)
+  * Speed (273.5 ms per image)
+  * Deployment-readiness (ONNX, pt export available)
+  * It outperformed older YOLOv5 and YOLOv12 in both mAP and runtime on real-world recyclable detection scenarios.
+
+---
+
+### 📦 Deployment Version
+
+Final model used in production:
+
+
+* Link to model: [Model on drive](https://drive.google.com/file/d/1sV106Wv3wwc8tWEfKRaalzLtC0tZvP6T/view?usp=sharing)
+
+
+Can be exported to:
+
+* **ONNX** for edge devices
+* **TorchScript** for embedded systems
+
+---
+
 ## 🚀 How to Run the Project
 
 ### 🐍 Requirements
@@ -189,9 +271,101 @@ pip install ultralytics opencv-python matplotlib
    You can test the model using:
 
    ```python
-   model = YOLO('runs/detect/train/weights/best.pt')
+   model = YOLO('path/to/image.png')
    model.predict('path/to/image.png', save=True)
    ```
+> You can also use single_image_test.py to test a single image and see results.
+
+---
+
+## 🚀 Model Deployment
+
+Once the model is trained and validated, it can be deployed to the **smart Recycle Vending Machine** via a lightweight Linux-based GUI environment for real-time operation and testing.
+
+### 🖥️ GUI Operation
+
+You can interact with the deployed model using the pre-configured graphical interface (GUI):
+
+| Task                       | Command        |
+| -------------------------- | -------------- |
+| Start production GUI       | `~/gui.sh`     |
+| Start GUI in dev/test mode | `~/gui-dev.sh` |
+
+---
+
+### 💻 Accessing the Terminal (i3 Window Manager)
+
+The system uses the **i3wm** window manager. Here are the essential shortcuts:
+
+| Action                         | Shortcut                    |
+| ------------------------------ | --------------------------- |
+| **Close a window**             | `Windows + Shift + Q`       |
+| **Switch workspace**           | `Windows + [number]`        |
+| **Open terminal**              | `Windows + Enter`           |
+| **Navigate between terminals** | `Windows + Arrow keys`      |
+| **Open Chromium browser**      | Type `chromium` in terminal |
+
+More on i3wm: [i3 Window Manager Docs](https://i3wm.org/docs/userguide.html)
+
+---
+
+### 📁 Key Directories on Device
+
+| Purpose                 | Command                                   |
+| ----------------------- | ----------------------------------------- |
+| **Data directory**      | `cd ~/.local/share/dropme/gui`            |
+| **Code directory**      | `cd ~/.local/state/dropme/gui`            |
+| **Copy from downloads** | `cp ~/Downloads/<filename> <destination>` |
+
+> The main code fo the machine learning and AI is called `mlmodel.py`.
+
+> You could use `ls` command to list items in directory.
+
+---
+
+### 🔁 Transferring Files
+
+To transfer files wirelessly:
+
+1. Connect both devices to the **same Wi-Fi network**.
+2. Open **[pairdrop.net](https://pairdrop.net)** on both machines.
+3. Drag and drop files between the browser windows.
+
+---
+
+### 🔧 Remote Code Editing via SSH
+
+You can edit code from your **laptop** using **SSH access**.
+
+#### 1. Connect via SSH
+
+* Get device IP:
+
+  ```bash
+  ip addr
+  ```
+* Connect from laptop:
+
+  ```bash
+  ssh app@<DEVICE_IP>
+  ```
+
+  * **Username:** `app`
+  * **Password:** `8888`
+
+#### 2. Edit Code Using Helix Editor
+
+The Helix text editor (`hx`) is installed by default.
+
+| Action          | Command / Shortcut          |
+| --------------- | --------------------------- |
+| Open a file     | `hx <file>`                 |
+| Enter edit mode | Press `i`                   |
+| Exit edit mode  | Press `Esc`                 |
+| Save changes    | Type `:w` and press `Enter` |
+| Quit editor     | Type `:q` and press `Enter` |
+
+📚 Helix docs: [helix-editor.com](https://helix-editor.com/)
 
 ---
 
