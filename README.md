@@ -216,10 +216,10 @@ All models were evaluated on the same **test dataset** (10% split) using the fol
 The model’s predictions were visualized across the test set with annotated bounding boxes:
 
 * Confusion matrix:
-  ![](balanced_evaluation_results\confusion_matrix.png)
+  ![](balanced_evaluation_results/confusion_matrix.png)
 
 * Example predictions:
-  ![](balanced_evaluation_results\val_batch1_pred.jpg)
+  ![](balanced_evaluation_results/val_batch1_pred.jpg)
 
 ---
 
