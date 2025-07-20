@@ -1,0 +1,11 @@
+Evaluation Metrics Summary:
+
+| Class              | Precision | Recall    | mAP\@0.5  | mAP\@0.5:0.95 |
+| ------------------ | --------- | --------- | --------- | ------------- |
+| Accepted\_aluminum | 0.992     | 1.000     | 0.995     | 0.942         |
+| Accepted\_plastic  | 1.000     | 0.995     | 0.995     | 0.924         |
+| Background         | 0.895     | 1.000     | 0.995     | 0.995         |
+| Hand               | 0.906     | 0.938     | 0.971     | 0.883         |
+| Rejected\_aluminum | 1.000     | 0.965     | 0.995     | 0.900         |
+| Rejected\_plastic  | 0.997     | 0.975     | 0.995     | 0.893         |
+| All (Mean)         | 0.965     | 0.979     | 0.991     | 0.923         |
