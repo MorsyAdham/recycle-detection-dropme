@@ -17,7 +17,7 @@ The data used is custom-collected from inside the vending machine and categorize
 - [⚙️ YOLOv8 Model Training (yolo8\_model\_training.ipynb)](#YOLOv8-Model-Training)
 - [📈 Outputs](#Outputs)
 - [📈 AI Models & Comparisons](#AI-Models-and-Comparisons)
-- [🚀 How to Run the Project](How-to-Run-the-Project)
+- [🚀 How to Run the Project](#How-to-Run-the-Project)
 - [🚀 Model Deployment](#Model-Deployment)
 - [🧠 Project Purpose & Context](#Project-Purpose-and-Context)
 
