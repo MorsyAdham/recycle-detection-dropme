@@ -216,10 +216,9 @@ All models were evaluated on the same **test dataset** (10% split) using the fol
 The model’s predictions were visualized across the test set with annotated bounding boxes:
 
 * Confusion matrix:
-  ![](balanced_evaluation_results/confusion_matrix.png)
-
+  ![](evaluation_results\balanced_evaluation_results\confusion_matrix.png)
 * Example predictions:
-  ![](balanced_evaluation_results/val_batch1_pred.jpg)
+  ![](evaluation_results\balanced_evaluation_results\val_batch0_pred.jpg)
 
 ---
 
@@ -331,6 +330,7 @@ To transfer files wirelessly:
 2. Open **[pairdrop.net](https://pairdrop.net)** on both machines.
 3. Drag and drop files between the browser windows.
 
+> 📁 The files will be in `~/Downloads`, and to move the file use this command `mv ~/Downloads/yourfilename ~/your/destination/folder`, the file will be move from the source folder to the destination folder.
 ---
 
 ### 🔧 Remote Code Editing via SSH
