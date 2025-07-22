@@ -13,12 +13,11 @@ The data used is custom-collected from inside the vending machine and categorize
 ## Tabel of Contents
 - [📁 Project Structure](#Project-Structure)
 - [📦 Dataset Information](#Dataset-Information)
-- 
+- [📊 Data Handling & Preprocessing (data\_handling.ipynb)](#Data-Handling-&-Preprocessing-(data\_handling.ipynb))
 
 ---
 
 ## Project Structure
-## 📁
 ```
 DropMe-Recycle-Detection/
 │
@@ -60,7 +59,7 @@ class_id center_x center_y width height
 
 ---
 
-## 📊 Data Handling & Preprocessing (data\_handling.ipynb)
+## Data Handling & Preprocessing (data\_handling.ipynb)
 
 The preprocessing pipeline ensures clean, high-quality training data for the model. It includes:
 
