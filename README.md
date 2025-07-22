@@ -12,7 +12,7 @@ The data used is custom-collected from inside the vending machine and categorize
 
 ## Tabel of Contents
 - [📁 Project Structure](#📁-Project-Structure)
-- [📦 Dataset Information](#📦-Dataset-Information)
+- [📦 Dataset Information](#Dataset-Information)
 
 ## 📁 Project Structure
 
@@ -31,7 +31,7 @@ DropMe-Recycle-Detection/
 
 ---
 
-## 📦 Dataset Information
+## Dataset Information
 
 ### 🔢 Classes (6 total)
 
