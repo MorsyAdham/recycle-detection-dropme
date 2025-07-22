@@ -10,6 +10,9 @@ This project aims to train an object detection model capable of identifying recy
 
 The data used is custom-collected from inside the vending machine and categorized into six key classes.
 
+## Tabel of Contents
+- [📁 Project Structure](#📁-Project-Structure)
+- [📦 Dataset Information](#📦-Dataset-Information)
 
 ## 📁 Project Structure
 
