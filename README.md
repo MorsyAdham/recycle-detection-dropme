@@ -13,7 +13,7 @@ The data used is custom-collected from inside the vending machine and categorize
 ## Tabel of Contents
 - [📁 Project Structure](#Project-Structure)
 - [📦 Dataset Information](#Dataset-Information)
-- [📊 Data Handling & Preprocessing (data\_handling.ipynb)](#Data-Handling-and-Preprocessing-(data\_handling.ipynb))
+- [📊 Data Handling & Preprocessing (data\_handling.ipynb)](#Data-Handling-and-Preprocessing)
 
 ---
 
@@ -59,7 +59,7 @@ class_id center_x center_y width height
 
 ---
 
-## Data Handling and Preprocessing (data\_handling.ipynb)
+## Data Handling and Preprocessing
 
 The preprocessing pipeline ensures clean, high-quality training data for the model. It includes:
 
