@@ -14,6 +14,12 @@ The data used is custom-collected from inside the vending machine and categorize
 - [📁 Project Structure](#Project-Structure)
 - [📦 Dataset Information](#Dataset-Information)
 - [📊 Data Handling & Preprocessing (data\_handling.ipynb)](#Data-Handling-and-Preprocessing)
+- [⚙️ YOLOv8 Model Training (yolo8\_model\_training.ipynb)](#YOLOv8-Model-Training)
+- [📈 Outputs](#Outputs)
+- [📈 AI Models & Comparisons](#AI-Models-and-Comparisons)
+- [🚀 How to Run the Project](How-to-Run-the-Project)
+- [🚀 Model Deployment](#Model-Deployment)
+- [🧠 Project Purpose & Context](#Project-Purpose-and-Context)
 
 ---
 
@@ -116,7 +122,7 @@ yolo-extracted-balanced/
 ```
 ---
 
-## ⚙️ YOLOv8 Model Training (yolo8\_model\_training.ipynb)
+## YOLOv8 Model Training
 
 ### 🧠 Model Setup
 
@@ -162,7 +168,7 @@ shutil.copy('runs/detect/train/weights/best.pt', 'models/dropme-recycle-v1.pt')
 
 ---
 
-## 📈 Outputs
+## Outputs
 
 * Model weights: `runs/detect/train/weights/best.pt`
 * Training logs, metrics, loss curves: `runs/detect/train/`
@@ -170,7 +176,7 @@ shutil.copy('runs/detect/train/weights/best.pt', 'models/dropme-recycle-v1.pt')
 
 ---
 
-## 📈 AI Models & Comparisons
+## AI Models and Comparisons
 
 ### 🧪 Models Evaluated
 
@@ -253,7 +259,7 @@ Can be exported to:
 
 ---
 
-## 🚀 How to Run the Project
+## How to Run the Project
 
 ### 🐍 Requirements
 
@@ -282,7 +288,7 @@ pip install ultralytics opencv-python matplotlib
 
 ---
 
-## 🚀 Model Deployment
+## Model Deployment
 
 Once the model is trained and validated, it can be deployed to the **smart Recycle Vending Machine** via a lightweight Linux-based GUI environment for real-time operation and testing.
 
@@ -374,7 +380,7 @@ The Helix text editor (`hx`) is installed by default.
 
 ---
 
-## 🧠 Project Purpose & Context
+## Project Purpose and Context
 
 This object detection model is part of a broader solution by **Drop Me**, a company focused on developing smart environmental solutions. This specific use-case involves detecting recyclables placed inside an **automated recycling vending machine**.
 
