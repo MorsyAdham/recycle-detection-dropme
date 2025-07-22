@@ -31,7 +31,7 @@ DropMe-Recycle-Detection/
 
 ---
 
-## Dataset Information
+## 📦 Dataset Information
 
 ### 🔢 Classes (6 total)
 
